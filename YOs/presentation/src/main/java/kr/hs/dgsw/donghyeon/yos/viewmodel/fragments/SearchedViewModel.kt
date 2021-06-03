@@ -8,6 +8,7 @@ import io.reactivex.observers.DisposableSingleObserver
 import kr.hs.dgsw.donghyeon.domain.entity.ResponseSearchedEntity
 import kr.hs.dgsw.donghyeon.domain.usecase.SearchedUseCase
 import kr.hs.dgsw.donghyeon.yos.base.viewmodel.BaseViewModel
+import kr.hs.dgsw.donghyeon.yos.viewmodel.adapters.PositionAdapter
 import javax.inject.Inject
 
 class SearchedViewModel @Inject constructor(
@@ -22,6 +23,10 @@ class SearchedViewModel @Inject constructor(
     val searchedProfileUrl = MutableLiveData<String>()
     val searchedLevel = MutableLiveData<String>()
     val searchedIsPrivate = MutableLiveData<Boolean>()
+
+    val positionAdapter : PositionAdapter = PositionAdapter()
+
+
 
     private fun initializeValue() {
         isLoading.value = true
@@ -44,6 +49,9 @@ class SearchedViewModel @Inject constructor(
                     searchedProfileUrl.value = response.portraitUrl
                     searchedLevel.value = "레벨 : ${response.prestige}${response.level}"
                     searchedIsPrivate.value = response.isPrivate
+
+                    positionAdapter.setData(response.ratingList!!)
+
                 }
 
                 override fun onError(e: Throwable) {

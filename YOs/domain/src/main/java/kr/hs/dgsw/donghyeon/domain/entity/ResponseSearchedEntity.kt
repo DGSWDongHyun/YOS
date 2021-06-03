@@ -1,6 +1,7 @@
 package kr.hs.dgsw.donghyeon.domain.entity
 
 import com.google.gson.annotations.SerializedName
+import kr.hs.dgsw.donghyeon.domain.entity.subdata.CompetitiveData
 
 data class ResponseSearchedEntity(
     @SerializedName("icon")
@@ -12,5 +13,7 @@ data class ResponseSearchedEntity(
     @SerializedName("prestige")
     val prestige : String?,
     @SerializedName("private")
-    val isPrivate : Boolean?
+    val isPrivate : Boolean?,
+    @SerializedName("ratings")
+    val ratingList : ArrayList<CompetitiveData>?
 )

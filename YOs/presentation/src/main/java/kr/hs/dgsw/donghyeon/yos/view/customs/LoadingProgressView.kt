@@ -1,4 +1,4 @@
-package kr.hs.dgsw.donghyeon.yos.view.custom
+package kr.hs.dgsw.donghyeon.yos.view.customs
 
 import android.content.Context
 import android.graphics.Canvas
