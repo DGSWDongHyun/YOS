@@ -78,6 +78,9 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
     kapt  "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
 
+    // lottie
+    implementation "com.airbnb.android:lottie:$rootProject.lottieVersion"
+
     // clean - architecture
     implementation project(":data")
     implementation project(":domain")

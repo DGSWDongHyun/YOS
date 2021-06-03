@@ -3,6 +3,7 @@ package kr.hs.dgsw.donghyeon.yos.widget.extensions
 import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 
 class BindingAdapter {

@@ -21,10 +21,13 @@ class SearchedViewModel @Inject constructor(
     val searchedNickName = MutableLiveData<String>()
     val searchedProfileUrl = MutableLiveData<String>()
     val searchedLevel = MutableLiveData<String>()
+    val searchedIsPrivate = MutableLiveData<Boolean>()
 
     init {
         isLoading.value = true
         hasCompleted.value = false
+
+        searchedIsPrivate.value = false
     }
 
     fun loadSearchedResponse(type : String?, battleTag : String?) {
@@ -38,6 +41,7 @@ class SearchedViewModel @Inject constructor(
                     searchedNickName.value = response.userName
                     searchedProfileUrl.value = response.portraitUrl
                     searchedLevel.value = "레벨 : ${response.level}"
+                    searchedIsPrivate.value = response.isPrivate
                 }
 
                 override fun onError(e: Throwable) {

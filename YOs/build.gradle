@@ -18,6 +18,8 @@ buildscript {
         gsonVersion = "2.8.7"
 
         daggerVersion = '2.35.1'
+
+        lottieVersion = "3.7.0"
     }
 
     repositories {
