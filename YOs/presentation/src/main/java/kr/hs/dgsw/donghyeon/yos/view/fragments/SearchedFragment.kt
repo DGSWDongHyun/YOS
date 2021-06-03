@@ -28,6 +28,8 @@ class SearchedFragment @Inject constructor(
     override fun observeViewModel(view: FragmentSearchedBinding) {
         with(viewModel) {
             loadSearchedResponse(searchedResult.type, searchedResult.battleTag)
+
+            view.swipeLayout.setOnRefreshListener { loadSearchedResponse(searchedResult.type, searchedResult.battleTag) }
         }
     }
 }

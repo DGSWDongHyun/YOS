@@ -3,11 +3,19 @@ package kr.hs.dgsw.donghyeon.yos.widget.extensions
 import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 
 class BindingAdapter {
     companion object {
+
+        @BindingAdapter("bind:refreshStatus")
+        @JvmStatic
+        fun refreshStatus(swipeRefreshLayout: SwipeRefreshLayout?, isCompleted : Boolean) {
+            if(isCompleted)
+                swipeRefreshLayout?.isRefreshing = false
+        }
 
         @BindingAdapter("bind:visibleToView")
         @JvmStatic

@@ -23,7 +23,7 @@ class SearchedViewModel @Inject constructor(
     val searchedLevel = MutableLiveData<String>()
     val searchedIsPrivate = MutableLiveData<Boolean>()
 
-    init {
+    private fun initializeValue() {
         isLoading.value = true
         hasCompleted.value = false
 
@@ -31,6 +31,8 @@ class SearchedViewModel @Inject constructor(
     }
 
     fun loadSearchedResponse(type : String?, battleTag : String?) {
+        initializeValue()
+
         addDisposable(searchedUseCase.buildUseCaseObservable(type!!, battleTag!!),
             object : DisposableSingleObserver<ResponseSearchedEntity>() {
                 override fun onSuccess(response : ResponseSearchedEntity) {
@@ -40,7 +42,7 @@ class SearchedViewModel @Inject constructor(
 
                     searchedNickName.value = response.userName
                     searchedProfileUrl.value = response.portraitUrl
-                    searchedLevel.value = "레벨 : ${response.level}"
+                    searchedLevel.value = "레벨 : ${response.prestige}${response.level}"
                     searchedIsPrivate.value = response.isPrivate
                 }
 

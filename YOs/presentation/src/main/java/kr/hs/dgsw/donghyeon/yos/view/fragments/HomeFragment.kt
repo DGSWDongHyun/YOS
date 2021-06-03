@@ -23,7 +23,7 @@ class HomeFragment @Inject constructor(
         get() = R.layout.fragment_home
 
     override fun observeViewModel(view: FragmentHomeBinding) {
-        view.searchProfileView.setQuery("ØBJƐCŦEĐ-1215", false)
+        view.searchProfileView.setQuery("幸せだよ#1580", false)
 
         view.searchProfileView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {

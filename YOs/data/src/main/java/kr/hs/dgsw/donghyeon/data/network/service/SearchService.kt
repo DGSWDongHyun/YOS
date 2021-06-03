@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface SearchService {
-    @GET("player/{type}/global/{nameWithBattleTag}")
+    @GET("stats/{type}/asia/{nameWithBattleTag}/profile")
     fun getSearchedData(@Path("type") type : String = "pc",
                       @Path("nameWithBattleTag") battleTag : String?) : Single<Response<ResponseSearchedEntity>>
 }
