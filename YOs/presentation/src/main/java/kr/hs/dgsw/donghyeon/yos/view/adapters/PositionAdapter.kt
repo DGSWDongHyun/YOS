@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kr.hs.dgsw.donghyeon.domain.entity.subdata.CompetitiveData
 import kr.hs.dgsw.donghyeon.yos.R
 import kr.hs.dgsw.donghyeon.yos.base.view.BaseAdapter
@@ -33,8 +34,17 @@ class PositionAdapter(val positionArrayList: ArrayList<CompetitiveData> = arrayL
     }
 }
 
-class PositionViewHolder(viewDataBinding : ViewDataBinding, val viewModel : PositionViewModel) : RecyclerView.ViewHolder(viewDataBinding.root) {
+class PositionViewHolder(val view : ItemPositionBinding, val viewModel : PositionViewModel) : RecyclerView.ViewHolder(view.root) {
     fun bind(data : CompetitiveData) {
         viewModel.bind(data)
+
+        Glide.with(view.tierImageView.context).load(data.rankIcon).into(view.tierImageView)
+        Glide.with(view.roleIcon.context).load(data.roleIcon).into(view.roleIcon)
+        view.srTextView.text = "${data.scoreRole}점"
+        view.roleName.text = roleConverter(data.role!!)
+    }
+
+    fun roleConverter(role : String) : String {
+        return if(role == "damage") "딜러" else if(role == "support") "힐러" else "탱커"
     }
 }

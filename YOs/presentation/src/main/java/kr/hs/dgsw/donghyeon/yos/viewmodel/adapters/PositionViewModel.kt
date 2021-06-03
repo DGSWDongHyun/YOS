@@ -8,14 +8,17 @@ class PositionViewModel : BaseViewModel() {
 
     val searchedPosition = MutableLiveData<CompetitiveData>()
     val searchedPositionText = MutableLiveData<String>()
+    val searchedPositionRankUrl = MutableLiveData<String>()
 
     init {
         searchedPosition.value = CompetitiveData(0, "", "", "")
         searchedPositionText.value = ""
+        searchedPositionRankUrl.value = ""
     }
 
     fun bind(data : CompetitiveData) {
         searchedPosition.value = data
-        searchedPositionText.value = "${data.scoreRole}"
+        searchedPositionRankUrl.value = data.rankIcon
+        searchedPositionText.value = "${data.scoreRole}점"
     }
 }
